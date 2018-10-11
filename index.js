@@ -15,7 +15,7 @@ passport.use(
     (accessToken, refreshToken, profile, done) => {
       console.log("access token: ", accessToken);
       console.log("refresh token: ", refreshToken);
-      console.log("profile", profile);
+      console.log("profile: ", profile);
       console.log("done: ", done);
     }
   )
@@ -27,6 +27,10 @@ app.get(
     scope: ["profile", "email"]
   })
 );
+
+app.get("/", (req, res) => {
+  res.send("route page");
+});
 
 app.get("/auth/google/callback", passport.authenticate("google"));
 
